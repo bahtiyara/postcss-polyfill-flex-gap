@@ -1,4 +1,4 @@
-import { Processor, Plugin } from "postcss";
+import { Processor, Plugin, Root } from "postcss";
 
 export default function (_options = {}): Plugin | Processor {
   // Work with options here
@@ -7,9 +7,12 @@ export default function (_options = {}): Plugin | Processor {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
     Root(root, postcss) {
-      // console.log("root:", root, "postcss:", postcss);
-      // Transform CSS AST here
+      findGap(root);
     },
+
+    // Once(root) {
+    //   //
+    // },
 
     /*
     Declaration (decl, postcss) {
@@ -28,3 +31,22 @@ export default function (_options = {}): Plugin | Processor {
 }
 
 export const postcss = true;
+
+function findGap(root: Root) {
+  root.nodes.forEach((node) => {
+    if (node.type === "rule") {
+      const rule = node;
+      const selector = rule.selector;
+
+      rule.nodes.forEach((node) => {
+        if (node.type === "decl") {
+          const declaration = node;
+
+          if (declaration.prop === "gap") {
+            console.log(">>> selector:", selector);
+          }
+        }
+      });
+    }
+  });
+}

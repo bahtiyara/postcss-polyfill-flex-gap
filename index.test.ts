@@ -12,16 +12,24 @@ async function run(input: string, output: string, opts = {}) {
 
 test("removes flex gap", async () => {
   const input = `
-  a {
+  .list {
     display: flex;
     gap: 10px;
+  }
+  .item {
+    display: flex;
+    background-color: red;
   }`;
   const output = `
-  a {
+  .list {
     display: flex;
   }
-  a:not(:last-of-type) {
+  .list:not(:last-child) {
     margin-right: 10px;
+  }
+  .item {
+    display: flex;
+    background-color: red;
   }`;
   // const output = `
   // a {
