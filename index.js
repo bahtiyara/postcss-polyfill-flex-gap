@@ -1,16 +1,16 @@
 /**
  * @type {import('postcss').PluginCreator}
  */
-module.exports = (opts = {}) => {
+module.exports = () => {
   // Work with options here
 
   return {
-    postcssPlugin: 'postcss-polyfill-flex-gap',
-    /*
-    Root (root, postcss) {
+    postcssPlugin: "postcss-polyfill-flex-gap",
+
+    Root(root, postcss) {
+      console.log("root:", root, "postcss:", postcss);
       // Transform CSS AST here
-    }
-    */
+    },
 
     /*
     Declaration (decl, postcss) {
@@ -25,7 +25,7 @@ module.exports = (opts = {}) => {
       }
     }
     */
-  }
-}
+  };
+};
 
-module.exports.postcss = true
+module.exports.postcss = true;
