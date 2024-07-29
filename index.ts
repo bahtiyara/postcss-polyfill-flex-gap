@@ -7,7 +7,7 @@ export default function (_options = {}): Plugin | Processor {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
     Root(root, postcss) {
-      console.log("root:", root, "postcss:", postcss);
+      // console.log("root:", root, "postcss:", postcss);
       // Transform CSS AST here
     },
 
