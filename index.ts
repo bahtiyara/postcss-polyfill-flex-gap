@@ -1,7 +1,6 @@
-/**
- * @type {import('postcss').PluginCreator}
- */
-module.exports = () => {
+import { Processor, Plugin } from "postcss";
+
+export default function (_options = {}): Plugin | Processor {
   // Work with options here
 
   return {
@@ -26,6 +25,6 @@ module.exports = () => {
     }
     */
   };
-};
+}
 
-module.exports.postcss = true;
+export const postcss = true;

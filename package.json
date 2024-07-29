@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "unit": "node --test index.test.js",
-    "test": "npm run unit && eslint ."
+    "test": "jest"
   },
   "author": "Saidi <saidi@step.ai>",
   "license": "MIT",
@@ -22,8 +22,17 @@
     "postcss": "^8.4.27"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.9",
+    "@babel/preset-env": "^7.25.0",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.0.0",
+    "babel-jest": "^29.7.0",
     "eslint": "^8.47.0",
-    "postcss": "^8.4.27"
+    "jest": "^29.7.0",
+    "postcss": "^8.4.27",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   },
   "eslintConfig": {
     "parserOptions": {

@@ -1,10 +1,9 @@
-const postcss = require("postcss");
-const { equal } = require("node:assert");
-const { test } = require("node:test");
+import postcss from "postcss";
+import { equal } from "node:assert";
+import { test } from "node:test";
+import plugin from ".";
 
-const plugin = require("./");
-
-async function run(input, output, opts = {}) {
+async function run(input: string, output: string, opts = {}) {
   let result = await postcss([plugin(opts)]).process(input, {
     from: undefined,
   });
