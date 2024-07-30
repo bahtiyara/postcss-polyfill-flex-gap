@@ -23,14 +23,15 @@ export default function (_options = {}): Plugin | Processor {
 
           const declaration = node;
           const { value, prop } = declaration;
+          const marginRight = { prop: "margin-right", value };
+          const marginBottom = { prop: "margin-bottom", value };
 
           declaration.remove();
+
           const clone = rule.cloneAfter({
             selector: `${selector}:not(:last-child)`,
             nodes: [],
           });
-          const marginRight = { prop: "margin-right", value };
-          const marginBottom = { prop: "margin-bottom", value };
 
           if (prop === "row-gap") {
             clone.append(marginRight);
