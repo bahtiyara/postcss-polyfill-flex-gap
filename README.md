@@ -1,5 +1,5 @@
 # PostCSS polyfill flex gap
-[PostCSS] plugin This project polyfill all flexbox gaps into margins for older browsers.
+This plugin polyfills all flexbox gaps into margins for older browsers.
 
 ### Input
 
