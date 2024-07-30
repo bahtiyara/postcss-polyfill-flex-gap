@@ -21,7 +21,8 @@
   "files": [
     "lib",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "package.json"
   ],
   "engines": {
     "node": ">=18.0.0"
