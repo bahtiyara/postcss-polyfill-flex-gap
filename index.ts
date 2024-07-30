@@ -1,6 +1,6 @@
 import type { Processor, Plugin } from "postcss";
 
-function main(): Plugin | Processor {
+module.exports = function (): Plugin | Processor {
   return {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
@@ -57,7 +57,6 @@ function main(): Plugin | Processor {
       });
     },
   };
-}
+};
 
-export default main;
-export const postcss = true;
+module.exports.postcss = true;

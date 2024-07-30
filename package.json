@@ -1,6 +1,6 @@
 {
   "name": "postcss-polyfill-flex-gap",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "PostCSS plugin to polyfill flex gap",
   "keywords": [
     "postcss",
