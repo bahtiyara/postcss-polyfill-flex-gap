@@ -1,6 +1,6 @@
 import postcss from "postcss";
 
-const plugin = require(".");
+const plugin = require("./index.ts");
 
 async function run(input: string, output: string, opts = {}) {
   let result = await postcss([plugin(opts)]).process(input, {

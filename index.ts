@@ -4,9 +4,9 @@ module.exports = function (): Plugin | Processor {
   return {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
-    Once() {
-      console.log(">>> Processing started");
-    },
+    // Once() {
+    //   console.log(">>> Processing started");
+    // },
 
     Root(root) {
       root.nodes.forEach((node) => {
@@ -14,11 +14,22 @@ module.exports = function (): Plugin | Processor {
 
         const rule = node;
         const { selector } = rule;
-        const { css } = rule.source?.input ?? {};
-        const isFlex = css?.includes("display: flex");
-        const isColumn = css?.includes("flex-direction: column");
-        const isWrap = css?.includes("flex-wrap: wrap");
         const props = ["gap", "row-gap", "column-gap"];
+        let isFlex = false;
+        let isColumn = false;
+        let isWrap = false;
+
+        rule.walkDecls((decl) => {
+          if (decl.prop === "display" && decl.value === "flex") {
+            isFlex = true;
+          }
+          if (decl.prop === "flex-direction" && decl.value === "column") {
+            isColumn = true;
+          }
+          if (decl.prop === "flex-wrap" && decl.value === "wrap") {
+            isWrap = true;
+          }
+        });
 
         rule.nodes.forEach((node) => {
           if (node.type !== "decl" || !isFlex || !props.includes(node.prop)) {
