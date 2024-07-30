@@ -3,4 +3,4 @@ npm-debug.log
 yarn-error.log
 
 coverage/
-lib/
+index.js
