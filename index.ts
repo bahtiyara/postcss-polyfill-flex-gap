@@ -1,6 +1,6 @@
-import { Processor, Plugin } from "postcss";
+import type { Processor, Plugin } from "postcss";
 
-export default function (_options = {}): Plugin | Processor {
+function main(): Plugin | Processor {
   return {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
@@ -59,4 +59,5 @@ export default function (_options = {}): Plugin | Processor {
   };
 }
 
+export default main;
 export const postcss = true;
