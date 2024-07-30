@@ -4,6 +4,10 @@ export default function (_options = {}): Plugin | Processor {
   return {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
+    Once() {
+      console.log(">>> Processing started");
+    },
+
     Root(root) {
       root.nodes.forEach((node) => {
         if (node.type !== "rule") return;
