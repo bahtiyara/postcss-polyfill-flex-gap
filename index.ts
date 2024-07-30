@@ -17,7 +17,7 @@ export default function (_options = {}): Plugin | Processor {
         const props = ["gap", "row-gap", "column-gap"];
 
         rule.nodes.forEach((node) => {
-          if (node.type !== "decl" || !isFlex || props.includes(node.prop)) {
+          if (node.type !== "decl" || !isFlex || !props.includes(node.prop)) {
             return;
           }
 
