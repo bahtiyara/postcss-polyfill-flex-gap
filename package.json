@@ -11,8 +11,7 @@
   "scripts": {
     "unit": "node --test index.test.js",
     "test": "jest",
-    "build": "tsc index.ts",
-    "prepublish": "npm run build"
+    "build": "tsc index.ts"
   },
   "author": "Bahtiyar Ahmidi <bahtiyar_a@live.com>",
   "license": "MIT",
