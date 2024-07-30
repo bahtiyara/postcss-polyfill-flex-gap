@@ -22,9 +22,9 @@ export default function (_options = {}): Plugin | Processor {
           }
 
           const declaration = node;
-          declaration.remove();
           const { value, prop } = declaration;
 
+          declaration.remove();
           const clone = rule.cloneAfter({
             selector: `${selector}:not(:last-child)`,
             nodes: [],
