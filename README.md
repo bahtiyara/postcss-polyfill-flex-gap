@@ -1,9 +1,10 @@
 # PostCSS polyfill flex gap
 This plugin polyfills all flexbox gaps into margins for older browsers.
 
-### Input
+### Basic example
 
 ```css
+/* input */
 .list {
   display: flex;
   gap: 10px;
@@ -12,11 +13,8 @@ This plugin polyfills all flexbox gaps into margins for older browsers.
   display: flex;
   background-color: red;
 }
-```
 
-### Output
-
-```css
+/* output */
 .list {
   display: flex;
 }
@@ -26,5 +24,24 @@ This plugin polyfills all flexbox gaps into margins for older browsers.
 .item {
   display: flex;
   background-color: red;
+}
+```
+
+### flex-wrap
+This plugin DOES NOT process `flex-wrap: wrap`
+
+```css
+/* input */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* output */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 ```
