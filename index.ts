@@ -33,7 +33,7 @@ module.exports = function (): Plugin | Processor {
           declaration.remove();
 
           const clone = rule.cloneAfter({
-            selector: `${selector}:not(:last-child)`,
+            selector: `${selector} > *:not(:last-child)`,
             nodes: [],
           });
 

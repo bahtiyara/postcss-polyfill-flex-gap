@@ -23,7 +23,7 @@ test("removes flex gap", async () => {
   .list {
     display: flex;
   }
-  .list:not(:last-child) {
+  .list > *:not(:last-child) {
     margin-right: 10px;
   }
   .item {

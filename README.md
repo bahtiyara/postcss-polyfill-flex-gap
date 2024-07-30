@@ -20,7 +20,7 @@ This plugin polyfills all flexbox gaps into margins for older browsers.
 .list {
   display: flex;
 }
-.list:not(:last-child) {
+.list > *:not(:last-child) {
   margin-right: 10px;
 }
 .item {
