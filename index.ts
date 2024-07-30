@@ -27,8 +27,8 @@ export default function (_options = {}): Plugin | Processor {
 
           const clone = rule.cloneAfter({
             selector: `${selector}:not(:last-child)`,
+            nodes: [],
           });
-          clone.removeAll();
           const marginRight = { prop: "margin-right", value };
           const marginBottom = { prop: "margin-bottom", value };
 
@@ -42,12 +42,12 @@ export default function (_options = {}): Plugin | Processor {
             return;
           }
 
-          if (!isWrap) {
-            clone.append(isColumn ? marginBottom : marginRight);
+          if (isWrap) {
+            clone.append(marginBottom, marginRight);
             return;
           }
 
-          clone.append(marginBottom, marginRight);
+          clone.append(isColumn ? marginBottom : marginRight);
         });
       });
     },
