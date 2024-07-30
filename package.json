@@ -1,6 +1,6 @@
 {
   "name": "postcss-polyfill-flex-gap",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "PostCSS plugin to polyfill flex gap",
   "keywords": [
     "postcss",
@@ -11,13 +11,12 @@
   "scripts": {
     "unit": "node --test index.test.js",
     "test": "jest",
-    "build": "tsc index.ts",
-    "publish": "npm run build && npm publish"
+    "build": "tsc index.ts"
   },
   "author": "Bahtiyar Ahmidi <bahtiyar_a@live.com>",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/bahtiyara/postcss-polyfill-flex-gap"
+    "url": "git+https://github.com/bahtiyara/postcss-polyfill-flex-gap.git"
   },
   "main": "index.js",
   "files": [
