@@ -7,7 +7,6 @@ async function run(input: string, output: string, opts = {}) {
   });
 
   expect(result.css).toEqual(output);
-  // expect(result.warnings().length).toEqual(0);
 }
 
 test("removes flex gap", async () => {

@@ -1,4 +1,4 @@
-import { Processor, Plugin, Root } from "postcss";
+import { Processor, Plugin, Root, Helpers } from "postcss";
 
 export default function (_options = {}): Plugin | Processor {
   // Work with options here
@@ -6,47 +6,54 @@ export default function (_options = {}): Plugin | Processor {
   return {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
-    Root(root, postcss) {
-      findGap(root);
+    Root(root, _postcss) {
+      root.nodes.forEach((node) => {
+        if (node.type !== "rule") return;
+
+        const rule = node;
+        const { selector } = rule;
+        const { css } = rule.source?.input ?? {};
+        const isFlex = css?.includes("display: flex");
+        const isColumn = css?.includes("flex-direction: column");
+        const isWrap = css?.includes("flex-wrap: wrap");
+        const props = ["gap", "row-gap", "column-gap"];
+
+        rule.nodes.forEach((node) => {
+          if (node.type !== "decl" || !isFlex || props.includes(node.prop)) {
+            return;
+          }
+
+          const declaration = node;
+          declaration.remove();
+          const { value, prop } = declaration;
+
+          const clone = rule.cloneAfter({
+            selector: `${selector}:not(:last-child)`,
+          });
+          clone.removeAll();
+          const marginRight = { prop: "margin-right", value };
+          const marginBottom = { prop: "margin-bottom", value };
+
+          if (prop === "row-gap") {
+            clone.append(marginRight);
+            return;
+          }
+
+          if (prop === "column-gap") {
+            clone.append(marginBottom);
+            return;
+          }
+
+          if (!isWrap) {
+            clone.append(isColumn ? marginBottom : marginRight);
+            return;
+          }
+
+          clone.append(marginBottom, marginRight);
+        });
+      });
     },
-
-    // Once(root) {
-    //   //
-    // },
-
-    /*
-    Declaration (decl, postcss) {
-      // The faster way to find Declaration node
-    }
-    */
-
-    /*
-    Declaration: {
-      color: (decl, postcss) {
-        // The fastest way find Declaration node if you know property name
-      }
-    }
-    */
   };
 }
 
 export const postcss = true;
-
-function findGap(root: Root) {
-  root.nodes.forEach((node) => {
-    if (node.type === "rule") {
-      const rule = node;
-      const selector = rule.selector;
-
-      rule.nodes.forEach((node) => {
-        if (node.type === "decl") {
-          const declaration = node;
-
-          if (declaration.prop === "gap") {
-            console.log(">>> selector:", selector);
-          }
-        }
-      });
-    }
-  });
-}
