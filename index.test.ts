@@ -1,5 +1,6 @@
 import postcss from "postcss";
-import plugin from ".";
+
+const plugin = require(".");
 
 async function run(input: string, output: string, opts = {}) {
   let result = await postcss([plugin(opts)]).process(input, {
@@ -30,11 +31,24 @@ test("removes flex gap", async () => {
     display: flex;
     background-color: red;
   }`;
-  // const output = `
-  // a {
-  //   display: flex;
-  //   gap: 10px;
-  // }`;
+
+  const input2 = `
+    .container {
+      display: flex;
+      gap: 4px;
+      position: relative;
+    }
+  `;
+  const output2 = `
+    .container {
+      display: flex;
+      position: relative;
+    }
+    .container > *:not(:last-child) {
+      margin-right: 4px;
+    }
+  `;
 
   await run(input, output, {});
+  await run(input2, output2, {});
 });
