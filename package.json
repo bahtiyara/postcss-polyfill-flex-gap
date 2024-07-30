@@ -12,7 +12,7 @@
     "unit": "node --test index.test.js",
     "test": "jest"
   },
-  "author": "Saidi <saidi@step.ai>",
+  "author": "Bahtiyar Ahmidi <bahtiyar_a@live.com>",
   "license": "MIT",
   "repository": "https://github.com/bahtiyara/postcss-polyfill-flex-gap",
   "engines": {
