@@ -4,7 +4,7 @@ export default function (_options = {}): Plugin | Processor {
   return {
     postcssPlugin: "postcss-polyfill-flex-gap",
 
-    Root(root, _postcss) {
+    Root(root) {
       root.nodes.forEach((node) => {
         if (node.type !== "rule") return;
 

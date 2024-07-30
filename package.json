@@ -10,12 +10,13 @@
   ],
   "scripts": {
     "unit": "node --test index.test.js",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc index.ts --outDir lib"
   },
   "author": "Bahtiyar Ahmidi <bahtiyar_a@live.com>",
   "license": "MIT",
   "repository": "https://github.com/bahtiyara/postcss-polyfill-flex-gap",
-  "main": "index.js",
+  "main": "lib/index.js",
   "engines": {
     "node": ">=18.0.0"
   },
