@@ -28,7 +28,12 @@ module.exports = function (): Plugin | Processor {
         });
 
         rule.nodes.forEach((node) => {
-          if (node.type !== "decl" || !isFlex || !props.includes(node.prop)) {
+          if (
+            node.type !== "decl" ||
+            !isFlex ||
+            !props.includes(node.prop) ||
+            isWrap
+          ) {
             return;
           }
 
@@ -41,8 +46,6 @@ module.exports = function (): Plugin | Processor {
             selector: `${selector} > *:not(:last-child)`,
             nodes: [],
           });
-
-          if (isWrap) return;
 
           declaration.remove();
 
